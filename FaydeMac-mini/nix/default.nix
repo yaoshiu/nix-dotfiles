@@ -19,7 +19,7 @@
     gc = {
       automatic = true;
       interval = {
-          Week = 1;
+        Weekday = 1;
       };
       options = "--delete-older-than 30d";
     };
