@@ -1,0 +1,9 @@
+keys:
+  - &yaoshiu_NixOS age1qdj9y86tpps96uzxkyq6wynnwdkr0jlt28pqdey23uj30axs8arqpzsfu9
+  - &root_NixOS age1qsg6p8wh2ggjqxxnfv93y6rxmzc5mcdwknmjudzqxpwe6wefepwqxcaee4
+creation_rules:
+  - path_regex: NixOS/secrets/[^/]+\.(yaml|json|env|ini)
+    key_groups:
+      - age:
+          - *root_NixOS
+          - *yaoshiu_NixOS

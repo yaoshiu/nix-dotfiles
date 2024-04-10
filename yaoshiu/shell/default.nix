@@ -1,0 +1,7 @@
+{...}: {
+  imports = [
+    ./tools
+    ./zsh
+    ./fish
+  ];
+}
