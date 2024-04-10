@@ -24,7 +24,7 @@
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
@@ -130,7 +130,7 @@
         ];
       };
 
-      darwinConfigurations.Darwin = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.FaydeMac-mini = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           {
@@ -140,7 +140,6 @@
               pretty-derby.overlays.default
               nix-vscode-extensions.overlays.default
               (self: super: {
-                unstable = nixpkgs-unstable.legacyPackages.${super.system};
                 darwin-pkgs = nixpkgs-darwin.legacyPackages.${super.system};
               })
             ];
@@ -148,7 +147,7 @@
 
           ./darwin-configuration.nix
 
-          ./Darwin
+          ./FaydeMac-mini
 
           home-manager.darwinModules.home-manager
 

@@ -21,14 +21,24 @@
     package = pkgs.nix-ld-rs;
   };
 
-  environment.systemPackages = with pkgs; [
-    killall
-    bc
-    unzipNLS
-    wget
-    yj
-    nix-ld-rs
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      killall
+      bc
+      unzipNLS
+      wget
+      yj
+      nix-ld-rs
+    ];
+
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
+  };
 
   programs.git.enable = true;
 

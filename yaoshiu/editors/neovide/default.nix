@@ -10,18 +10,8 @@
     maximized = false;
 
     font = {
-      normal = [ "FiraCode Nerd Font Mono" ];
+      normal = [ "Hasklug Nerd Font Mono" ];
       size = 18;
-      features."FiraCode Nerd Font Mono" = [
-        "+cv01"
-        "+cv02"
-        "+cv06"
-        "+ss01"
-        "+zero"
-        "+ss04"
-        "+cv31"
-        "+cv29"
-      ];
     };
   };
 

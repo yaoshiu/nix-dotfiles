@@ -18,7 +18,9 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = {
+          Week = 1;
+      };
       options = "--delete-older-than 30d";
     };
   };

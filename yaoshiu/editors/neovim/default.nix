@@ -7,6 +7,7 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       wl-clipboard
+      imagemagick
     ];
   };
 

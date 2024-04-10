@@ -4,7 +4,6 @@
   users.users.yaoshiu = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "docker" "network" ];
-    shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets."password/yaoshiu@NixOS".path;
   };
 

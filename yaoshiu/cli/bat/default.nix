@@ -4,7 +4,7 @@
     themes = {
       catppuccin = {
         src = pkgs.catppuccin;
-        file = "bat/Catppuccin-macchiato.tmTheme";
+        file = "bat/Catppuccin Macchiato.tmTheme";
       };
     };
 
