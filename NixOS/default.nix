@@ -22,7 +22,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    git
     killall
     bc
     unzipNLS
@@ -30,6 +29,8 @@
     yj
     nix-ld-rs
   ];
+
+  programs.git.enable = true;
 
   programs.fish.enable = true;
 
