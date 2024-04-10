@@ -9,6 +9,9 @@
       wl-clipboard
       imagemagick
     ];
+    extraLuaPackages = ps: with ps; [
+      magick
+    ];
   };
 
   xdg.configFile.nvim = {
