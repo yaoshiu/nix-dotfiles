@@ -77,6 +77,7 @@
     , sops-nix
     , grub2-themes
     , nix-ld-rs
+    , flake-utils
     }: {
       nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -164,5 +165,22 @@
           }
         ];
       };
-    };
+    } // (flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      in {
+        devShells.default = with pkgs; mkShell {
+          buildInputs = lib.optional stdenv.isDarwin [
+            libiconv
+          ];
+          nativeBuildInputs = [
+            gcc
+            pkg-config
+            luajit
+          ];
+        };
+      }
+    ));
 }

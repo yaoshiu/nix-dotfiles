@@ -55,8 +55,9 @@
 
     systemPackages = with pkgs; [
       clang
+      clang-tools
       git
-      uutils-coreutils-noprefix
+      coreutils
       wget
     ];
   };
