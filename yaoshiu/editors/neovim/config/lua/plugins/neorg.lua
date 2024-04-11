@@ -7,6 +7,7 @@ return {
       config = true,
     },
   },
+  cmd = "Neorg",
   ft = "norg",
   version = "*",
   opts = {
