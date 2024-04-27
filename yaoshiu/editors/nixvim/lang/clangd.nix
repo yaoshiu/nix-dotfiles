@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       clangd-extensions = {
@@ -95,8 +96,17 @@
               cppdbg = {
                 port = "\${port}";
                 executable = {
-                  command = "${with pkgs; if stdenv.isDarwin then vscode-marketplace.vadimcn.vscode-lldb else vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
-                  args = [ "--port" "\${port}" ];
+                  command = "${
+                    with pkgs;
+                    if stdenv.isDarwin then
+                      vscode-marketplace.vadimcn.vscode-lldb
+                    else
+                      vscode-extensions.vadimcn.vscode-lldb
+                  }/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+                  args = [
+                    "--port"
+                    "\${port}"
+                  ];
                 };
               };
             };

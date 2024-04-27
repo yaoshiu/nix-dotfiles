@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       dap = {
@@ -32,7 +33,9 @@
 
       which-key = {
         registrations = {
-          "<leader>d" = {name = "+debug";};
+          "<leader>d" = {
+            name = "+debug";
+          };
         };
       };
     };
@@ -97,22 +100,24 @@
 
       {
         key = "<leader>da";
-        action = let
-          get_args = ''
-            (function (config)
-              local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
-              config = vim.deepcopy(config)
-              ---@cast args string[]
-              config.args = function()
-                local new_args = vim.fn.input("Run with args: ", table.concat(args, " ")) --[[@as string]]
-                return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
-              end
-              return config
-            end)
+        action =
+          let
+            get_args = ''
+              (function (config)
+                local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+                config = vim.deepcopy(config)
+                ---@cast args string[]
+                config.args = function()
+                  local new_args = vim.fn.input("Run with args: ", table.concat(args, " ")) --[[@as string]]
+                  return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
+                end
+                return config
+              end)
+            '';
+          in
+          ''
+            function() require("dap").continue({ before = ${get_args}}) end
           '';
-        in ''
-          function() require("dap").continue({ before = ${get_args}}) end
-        '';
         lua = true;
         options.desc = "Run with Args";
       }
@@ -250,7 +255,10 @@
             require("dapui").eval()
           end
         '';
-        mode = ["n" "v"];
+        mode = [
+          "n"
+          "v"
+        ];
         lua = true;
         options.desc = "Eval";
       }

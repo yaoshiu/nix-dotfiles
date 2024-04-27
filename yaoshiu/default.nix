@@ -1,4 +1,10 @@
-{ pkgs, lib, osConfig, ... }: {
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
+{
   home = {
     username = "yaoshiu";
     stateVersion = "22.11";
@@ -22,7 +28,8 @@
       ./shell
       ./fonts
       ./terminals
-    ] ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
+    ]
+    ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
       ./desktops
       ./applications
       ./gtk

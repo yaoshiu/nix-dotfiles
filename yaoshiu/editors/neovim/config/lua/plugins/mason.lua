@@ -1,6 +1,6 @@
 return {
-	"mason.nvim",
-	opts = {
-		PATH = "append",
-	},
+  "mason.nvim",
+  opts = {
+    PATH = "append",
+  },
 }

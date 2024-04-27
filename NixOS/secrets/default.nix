@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   sops = {
     defaultSopsFile = ./default.yaml;
     age = {
@@ -7,6 +8,6 @@
         "/root/.ssh/id_ed25519"
       ];
     };
-    secrets."password/yaoshiu@NixOS" = {};
+    secrets."password/yaoshiu@NixOS" = { };
   };
 }

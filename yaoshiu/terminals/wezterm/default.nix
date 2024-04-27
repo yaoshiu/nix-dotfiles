@@ -1,7 +1,6 @@
-{ ... }: {
-  imports = [
-    ./my-module.nix
-  ];
+{ ... }:
+{
+  imports = [ ./my-module.nix ];
 
   programs.wezterm = {
     enable = true;

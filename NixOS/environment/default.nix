@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   environment.homeBinInPath = true;
   environment.localBinInPath = true;
 

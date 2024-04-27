@@ -1,7 +1,6 @@
-{ ... }: {
-  imports = [
-    ./yaoshiu
-  ];
+{ ... }:
+{
+  imports = [ ./yaoshiu ];
 
   users.mutableUsers = false;
 }

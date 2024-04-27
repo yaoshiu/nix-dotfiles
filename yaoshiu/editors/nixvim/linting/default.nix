@@ -1,9 +1,14 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       lint = {
         enable = true;
-        autoCmd.event = ["BufWritePost" "BufReadPost" "InsertLeave"];
+        autoCmd.event = [
+          "BufWritePost"
+          "BufReadPost"
+          "InsertLeave"
+        ];
       };
     };
   };

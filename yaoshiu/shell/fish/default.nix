@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.fish = {
     enable = true;
 
@@ -48,11 +49,13 @@
     '';
   };
 
-  xdg.configFile."fish/themes/Catppuccin Macchiato.theme".source = "${pkgs.fetchFromGitHub {
-    name = "fish";
-    owner = "catppuccin";
-    repo = "fish";
-    rev = "0ce27b518e8ead555dec34dd8be3df5bd75cff8e";
-    hash = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
-  }}/themes/Catppuccin Macchiato.theme";
+  xdg.configFile."fish/themes/Catppuccin Macchiato.theme".source = "${
+    pkgs.fetchFromGitHub {
+      name = "fish";
+      owner = "catppuccin";
+      repo = "fish";
+      rev = "0ce27b518e8ead555dec34dd8be3df5bd75cff8e";
+      hash = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
+    }
+  }/themes/Catppuccin Macchiato.theme";
 }

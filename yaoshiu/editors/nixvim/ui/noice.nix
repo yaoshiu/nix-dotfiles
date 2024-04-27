@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins.noice = {
       enable = true;
@@ -15,9 +16,9 @@
           filter = {
             event = "msg_show";
             any = [
-              {find = "%d+L, %d+B";}
-              {find = "; after #%d+";}
-              {find = "; before #%d+";}
+              { find = "%d+L, %d+B"; }
+              { find = "; after #%d+"; }
+              { find = "; before #%d+"; }
             ];
           };
           view = "mini";
@@ -85,7 +86,11 @@
           function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end
         '';
         lua = true;
-        mode = ["i" "n" "s"];
+        mode = [
+          "i"
+          "n"
+          "s"
+        ];
         options = {
           silent = true;
           expr = true;
@@ -99,7 +104,11 @@
           function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end
         '';
         lua = true;
-        mode = ["i" "n" "s"];
+        mode = [
+          "i"
+          "n"
+          "s"
+        ];
         options = {
           silent = true;
           expr = true;

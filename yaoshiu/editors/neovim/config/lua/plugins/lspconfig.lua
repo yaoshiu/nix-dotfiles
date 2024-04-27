@@ -1,13 +1,19 @@
 return {
   "nvim-lspconfig",
   opts = {
+    inlay_hints = {
+      enabled = true,
+    },
+    codelens = {
+      enabled = true,
+    },
     servers = {
-      tailwindcss = {
-        init_options = {
-          userLanguages = {
-            eelixir = "html-eex",
-            eruby = "erb",
-            rust = "html",
+      nixd = {
+        settings = {
+          nixd = {
+            formatting = {
+              command = { "nixfmt" },
+            },
           },
         },
       },

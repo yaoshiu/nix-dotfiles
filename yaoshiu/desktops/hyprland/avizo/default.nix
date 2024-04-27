@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.avizo = {
     enable = true;
     settings = {
@@ -12,8 +13,6 @@
   };
 
   wayland.windowManager.hyprland.settings = {
-    decoration.blurls = [
-      "avizo"
-    ];
+    decoration.blurls = [ "avizo" ];
   };
 }

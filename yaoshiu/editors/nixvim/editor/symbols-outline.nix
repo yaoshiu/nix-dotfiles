@@ -1,8 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      symbols-outline-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ symbols-outline-nvim ];
 
     extraConfigLua = ''
       local icons = {

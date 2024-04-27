@@ -1,16 +1,18 @@
-{pkgs, ...}: let
-  wluma = pkgs.wluma.overrideAttrs (self: prev: {
-    postInstall =
-      prev.postInstall
-      + ''
-        sed -i 's|/bin|${pkgs.coreutils}/bin|g' 90-wluma-backlight.rules
-        install -Dm644 -t $out/lib/udev/rules.d/ 90-wluma-backlight.rules
-      '';
-  });
-in {
-  home.packages = [
-    wluma
-  ];
+{ pkgs, ... }:
+let
+  wluma = pkgs.wluma.overrideAttrs (
+    self: prev: {
+      postInstall =
+        prev.postInstall
+        + ''
+          sed -i 's|/bin|${pkgs.coreutils}/bin|g' 90-wluma-backlight.rules
+          install -Dm644 -t $out/lib/udev/rules.d/ 90-wluma-backlight.rules
+        '';
+    }
+  );
+in
+{
+  home.packages = [ wluma ];
 
   xdg.configFile."wluma/config.toml" = {
     text = ''

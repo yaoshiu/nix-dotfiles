@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.bottom = {
     enable = true;
     settings = {
@@ -6,7 +7,14 @@
         table_header_color = "#f4dbd6";
         all_cpu_color = "#f4dbd6";
         avg_cpu_color = "#ee99a0";
-        cpu_core_colors = [ "#ed8796" "#f5a97f" "#eed49f" "#a6da95" "#7dc4e4" "#c6a0f6" ];
+        cpu_core_colors = [
+          "#ed8796"
+          "#f5a97f"
+          "#eed49f"
+          "#a6da95"
+          "#7dc4e4"
+          "#c6a0f6"
+        ];
         ram_color = "#a6da95";
         swap_color = "#f5a97f";
         rx_color = "#a6da95";
@@ -22,7 +30,14 @@
         high_battery_color = "#a6da95";
         medium_battery_color = "#eed49f";
         low_battery_color = "#ed8796";
-        gpu_core_colors = [ "#7dc4e4" "#c6a0f6" "#ed8796" "#f5a97f" "#eed49f" "#a6da95" ];
+        gpu_core_colors = [
+          "#7dc4e4"
+          "#c6a0f6"
+          "#ed8796"
+          "#f5a97f"
+          "#eed49f"
+          "#a6da95"
+        ];
         arc_color = "#91d7e3";
       };
     };

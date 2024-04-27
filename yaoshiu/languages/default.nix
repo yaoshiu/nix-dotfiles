@@ -1,13 +1,14 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
-    ./java
+    # ./java
     ./cpp
     ./haskell
     ./javascript
     ./lua
-    ./prolog
+    # ./prolog
     ./python
     ./rust
-    ./scala
+    # ./scala
   ];
 }

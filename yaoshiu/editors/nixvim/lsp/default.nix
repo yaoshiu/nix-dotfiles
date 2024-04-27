@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
-  imports = [
-    ./fidget.nix
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ./fidget.nix ];
 
   programs.nixvim = {
     plugins = {
@@ -54,8 +53,6 @@
       };
     };
 
-    extraPlugins = with pkgs.vimPlugins; [
-      neoconf-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ neoconf-nvim ];
   };
 }

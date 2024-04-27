@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.kimpanel
-  ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ gnomeExtensions.kimpanel ];
 
   services.xserver = {
     enable = true;

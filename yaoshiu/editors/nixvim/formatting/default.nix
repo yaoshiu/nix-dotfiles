@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       conform-nvim = {
@@ -18,7 +19,10 @@
 
         formatters = {
           injected.options.ignore_errors = true;
-          rustfmt.args = [ "--edition" "2021" ];
+          rustfmt.args = [
+            "--edition"
+            "2021"
+          ];
         };
       };
     };
@@ -37,7 +41,10 @@
             require("conform").format({ formatters = { "injected" } })
           end
         '';
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         lua = true;
         options.desc = "Format Injected Langs";
       }

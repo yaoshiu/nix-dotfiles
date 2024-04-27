@@ -9,7 +9,7 @@ return {
   },
   cmd = "Neorg",
   ft = "norg",
-  version = "*",
+  -- version = "*",
   opts = {
     load = {
       ["core.defaults"] = {},

@@ -1,13 +1,22 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       rustaceanvim = {
         enable = true;
         dap.adapter = ''
           function ()
-            local extension_path = "${with pkgs; if stdenv.isDarwin then vscode-marketplace.vadimcn.vscode-lldb else vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/"
+            local extension_path = "${
+              with pkgs;
+              if stdenv.isDarwin then
+                vscode-marketplace.vadimcn.vscode-lldb
+              else
+                vscode-extensions.vadimcn.vscode-lldb
+            }/share/vscode/extensions/vadimcn.vscode-lldb/"
             local codelldb_path = extension_path .. "adapter/codelldb"
-            local liblldb_path = extension_path .. "lldb/lib/liblldb${if pkgs.stdenv.isDarwin then ".dylib" else ".so"}"
+            local liblldb_path = extension_path .. "lldb/lib/liblldb${
+              if pkgs.stdenv.isDarwin then ".dylib" else ".so"
+            }"
 
             local cfg = require("rustaceanvim.config")
             return cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
@@ -60,11 +69,7 @@
         };
       };
 
-      cmp.settings.sources = [
-        {
-          name = "crates";
-        }
-      ];
+      cmp.settings.sources = [ { name = "crates"; } ];
 
       lsp.servers = {
         taplo = {
@@ -82,8 +87,6 @@
       };
     };
 
-    extraPackages = with pkgs; [
-      lldb
-    ];
+    extraPackages = with pkgs; [ lldb ];
   };
 }

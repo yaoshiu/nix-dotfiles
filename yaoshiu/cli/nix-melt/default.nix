@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.nix-melt];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.nix-melt ];
 }

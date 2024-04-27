@@ -1,18 +1,18 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = rec {
-    autoGroups = builtins.foldl' (acc: cmd:
-      acc
-      // (
-        if builtins.hasAttr "group" cmd
-        then {${cmd.group} = {};}
-        else {}
-      )) {}
-    autoCmd;
+    autoGroups = builtins.foldl' (
+      acc: cmd: acc // (if builtins.hasAttr "group" cmd then { ${cmd.group} = { }; } else { })
+    ) { } autoCmd;
 
     autoCmd = [
       # Check if we neet to reload the file when it changed
       {
-        event = ["FocusGained" "TermClose" "TermLeave"];
+        event = [
+          "FocusGained"
+          "TermClose"
+          "TermLeave"
+        ];
         command = "checktime";
         group = "checktime";
       }

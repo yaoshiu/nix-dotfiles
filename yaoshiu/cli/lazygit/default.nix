@@ -1,10 +1,14 @@
-{ ... }: {
+{ ... }:
+{
   programs.lazygit = {
     enable = true;
     settings = {
       theme = {
         lightTheme = false;
-        activeBorderColor = [ "#a6da95" "bold" ];
+        activeBorderColor = [
+          "#a6da95"
+          "bold"
+        ];
         inactiveBorderColor = [ "#cad3f5" ];
         optionsTextColor = [ "#8aadf4" ];
         selectedLineBgColor = [ "#363a4f" ];

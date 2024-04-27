@@ -1,15 +1,13 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  screenshot = let
-    hyprland = config.wayland.windowManager.hyprland.finalPackage;
-    hyprctl = "${hyprland}/bin/hyprctl";
-    jq = "${pkgs.jq}/bin/jq";
-    grim = "${pkgs.grim}/bin/grim";
-    slurp = "${pkgs.slurp}/bin/slurp";
-  in
+{ pkgs, config, ... }:
+let
+  screenshot =
+    let
+      hyprland = config.wayland.windowManager.hyprland.finalPackage;
+      hyprctl = "${hyprland}/bin/hyprctl";
+      jq = "${pkgs.jq}/bin/jq";
+      grim = "${pkgs.grim}/bin/grim";
+      slurp = "${pkgs.slurp}/bin/slurp";
+    in
     pkgs.writeScriptBin "screenshot" ''
       workspace=$(${hyprctl} activeworkspace -j | ${jq} '.id')
 
@@ -19,7 +17,8 @@
       	${slurp} |
         ${grim} -g -
     '';
-in {
+in
+{
   imports = [
     ./ags
     ./avizo
@@ -28,9 +27,7 @@ in {
 
   programs.jq.enable = true;
 
-  home.packages = [
-    screenshot
-  ];
+  home.packages = [ screenshot ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -71,32 +68,32 @@ in {
           ", XF86AudioMicMute, exec, volumectl -m toggle-mute"
         ]
         # Vi like keybindings
-        ++ (let
-          viMove = {
-            l = "r";
-            h = "l";
-            j = "d";
-            k = "u";
-          };
-        in
-          builtins.concatMap (
-            name: [
-              "$mod, ${name}, movefocus, ${viMove.${name}}"
-              "$mod SHIFT, ${name}, swapwindow, ${viMove.${name}}"
-            ]
-          ) (builtins.attrNames viMove))
-        ++ builtins.concatLists (builtins.genList (
-            x: let
-              ws =
-                if x > 0
-                then builtins.toString x
-                else "10";
-            in [
+        ++ (
+          let
+            viMove = {
+              l = "r";
+              h = "l";
+              j = "d";
+              k = "u";
+            };
+          in
+          builtins.concatMap (name: [
+            "$mod, ${name}, movefocus, ${viMove.${name}}"
+            "$mod SHIFT, ${name}, swapwindow, ${viMove.${name}}"
+          ]) (builtins.attrNames viMove)
+        )
+        ++ builtins.concatLists (
+          builtins.genList (
+            x:
+            let
+              ws = if x > 0 then builtins.toString x else "10";
+            in
+            [
               "$mod, ${builtins.toString x}, workspace, ${ws}"
               "$mod SHIFT, ${builtins.toString x}, movetoworkspace, ${ws}"
             ]
-          )
-          10);
+          ) 10
+        );
 
       input = {
         kb_layout = "us";

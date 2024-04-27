@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins.flash = {
       enable = true;
@@ -17,7 +18,11 @@
         key = "s";
         action = "require('flash').jump";
         lua = true;
-        mode = ["n" "x" "o"];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         options = {
           desc = "Flash";
         };
@@ -27,7 +32,11 @@
         key = "S";
         action = "require('flash').treesitter";
         lua = true;
-        mode = ["n" "x" "o"];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         options = {
           desc = "Flash";
         };
@@ -47,7 +56,10 @@
         key = "R";
         action = "require('flash').treesitter_search";
         lua = true;
-        mode = ["o" "x"];
+        mode = [
+          "o"
+          "x"
+        ];
         options = {
           desc = "Treesitter Search";
         };

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins.luasnip = {
       enable = true;
@@ -8,8 +9,6 @@
       };
     };
 
-    extraPlugins = with pkgs.vimPlugins; [
-      friendly-snippets
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ friendly-snippets ];
   };
 }

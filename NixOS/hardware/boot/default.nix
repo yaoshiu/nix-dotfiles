@@ -1,7 +1,5 @@
-{ pkgs
-, lib
-, ...
-}: {
+{ pkgs, lib, ... }:
+{
   fileSystems."/efi".options = [ "umask=0077" ];
 
   boot = {

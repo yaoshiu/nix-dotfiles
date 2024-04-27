@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   security.please = {
     enable = true;
   };

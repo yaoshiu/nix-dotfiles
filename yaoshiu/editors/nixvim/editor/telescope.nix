@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     extraConfigLuaPre = ''
       Telescope = setmetatable({}, {
@@ -112,109 +113,111 @@
             end
           '';
         };
-        mappings = let
-          actions = ''
-            (require("telescope.actions"))
-          '';
-          flash = ''
-            function (prompt_bufnr)
-              require("flash").jump({
-                pattern = "^",
-                label = { after = { 0, 0 } },
-                search = {
-                  mode = "search",
-                  exclude = {
-                    function(win)
-                      return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
-                    end,
+        mappings =
+          let
+            actions = ''
+              (require("telescope.actions"))
+            '';
+            flash = ''
+              function (prompt_bufnr)
+                require("flash").jump({
+                  pattern = "^",
+                  label = { after = { 0, 0 } },
+                  search = {
+                    mode = "search",
+                    exclude = {
+                      function(win)
+                        return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+                      end,
+                    },
                   },
-                },
-                action = function(match)
-                  local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-                  picker:set_selection(match.pos[1] - 1)
-                end,
-              })
-            end
-          '';
-        in {
-          i = {
-            "<c-t>" = {
-              __raw = ''
-                function(...)
-                  return require("trouble.providers.telescope").open_with_trouble(...)
-                end
-              '';
+                  action = function(match)
+                    local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+                    picker:set_selection(match.pos[1] - 1)
+                  end,
+                })
+              end
+            '';
+          in
+          {
+            i = {
+              "<c-t>" = {
+                __raw = ''
+                  function(...)
+                    return require("trouble.providers.telescope").open_with_trouble(...)
+                  end
+                '';
+              };
+
+              "<a-t>" = {
+                __raw = ''
+                  function(...)
+                    return require("trouble.providers.telescope").open_selected_with_trouble(...)
+                  end
+                '';
+              };
+
+              "<a-i>" = {
+                __raw = ''
+                  function()
+                    local action_state = require("telescope.actions.state")
+                    local line = action_state.get_current_line()
+                    Telescope("find_files", { no_ignore = true, default_text = line })()
+                  end
+                '';
+              };
+
+              "<a-h>" = {
+                __raw = ''
+                  function()
+                    local action_state = require("telescope.actions.state")
+                    local line = action_state.get_current_line()
+                    Telescope("find_files", { hidden = true, default_text = line })()
+                  end
+                '';
+              };
+
+              "<C-Down>" = {
+                __raw = ''
+                  ${actions}.cycle_history_next
+                '';
+              };
+
+              "<C-Up>" = {
+                __raw = ''
+                  ${actions}.cycle_history_prev
+                '';
+              };
+
+              "<C-f>" = {
+                __raw = ''
+                  ${actions}.preview_scrolling_down
+                '';
+              };
+
+              "<C-b>" = {
+                __raw = ''
+                  ${actions}.preview_scrolling_up
+                '';
+              };
+
+              "<c-s>" = {
+                __raw = flash;
+              };
             };
 
-            "<a-t>" = {
-              __raw = ''
-                function(...)
-                  return require("trouble.providers.telescope").open_selected_with_trouble(...)
-                end
-              '';
-            };
+            n = {
+              q = {
+                __raw = ''
+                  ${actions}.close
+                '';
+              };
 
-            "<a-i>" = {
-              __raw = ''
-                function()
-                  local action_state = require("telescope.actions.state")
-                  local line = action_state.get_current_line()
-                  Telescope("find_files", { no_ignore = true, default_text = line })()
-                end
-              '';
-            };
-
-            "<a-h>" = {
-              __raw = ''
-                function()
-                  local action_state = require("telescope.actions.state")
-                  local line = action_state.get_current_line()
-                  Telescope("find_files", { hidden = true, default_text = line })()
-                end
-              '';
-            };
-
-            "<C-Down>" = {
-              __raw = ''
-                ${actions}.cycle_history_next
-              '';
-            };
-
-            "<C-Up>" = {
-              __raw = ''
-                ${actions}.cycle_history_prev
-              '';
-            };
-
-            "<C-f>" = {
-              __raw = ''
-                ${actions}.preview_scrolling_down
-              '';
-            };
-
-            "<C-b>" = {
-              __raw = ''
-                ${actions}.preview_scrolling_up
-              '';
-            };
-
-            "<c-s>" = {
-              __raw = flash;
+              s = {
+                __raw = flash;
+              };
             };
           };
-
-          n = {
-            q = {
-              __raw = ''
-                ${actions}.close
-              '';
-            };
-
-            s = {
-              __raw = flash;
-            };
-          };
-        };
       };
 
       keymaps = {

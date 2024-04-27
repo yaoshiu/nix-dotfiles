@@ -1,8 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
-    extraPlugins = [
-      pkgs.vimPlugins.nvim-spectre
-    ];
+    extraPlugins = [ pkgs.vimPlugins.nvim-spectre ];
 
     extraConfigLua = ''
       require('spectre').setup({

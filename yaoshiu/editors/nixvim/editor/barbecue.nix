@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       barbecue = {
@@ -19,7 +20,7 @@
         lazyUpdateContext = true;
         lsp = {
           autoAttach = true;
-          preference = ["nil_ls"];
+          preference = [ "nil_ls" ];
         };
         icons = {
           Array = " ";

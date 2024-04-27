@@ -1,6 +1,13 @@
 {
   description = "My personal NixOS and Nix Darwin configuration";
 
+  nixConfig = {
+    extra-substituters = [ "https://nix-community.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     ags = {
       url = "github:Aylur/ags";
@@ -60,25 +67,27 @@
   };
 
   outputs =
-    { ags
-    , home-manager
-    , hyprland
-    , neovim-nightly-overlay
-    , nil
-    , nix-darwin
-    , nix-vscode-extensions
-    , nixos-hardware
-    , nixpkgs
-    , nixpkgs-darwin
-    , nixpkgs-unstable
-    , nixvim
-    , pretty-derby
-    , self
-    , sops-nix
-    , grub2-themes
-    , nix-ld-rs
-    , flake-utils
-    }: {
+    {
+      ags,
+      home-manager,
+      hyprland,
+      neovim-nightly-overlay,
+      nil,
+      nix-darwin,
+      nix-vscode-extensions,
+      nixos-hardware,
+      nixpkgs,
+      nixpkgs-darwin,
+      nixpkgs-unstable,
+      nixvim,
+      pretty-derby,
+      self,
+      sops-nix,
+      grub2-themes,
+      nix-ld-rs,
+      flake-utils,
+    }:
+    {
       nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -98,9 +107,9 @@
 
           {
             nixpkgs.overlays = [
-              (self: super: {
+              (final: prev: {
                 ags = ags.packages.agsWithTypes;
-                unstable = nixpkgs-unstable.legacyPackages.${super.system};
+                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
               })
               pretty-derby.overlays.default
               neovim-nightly-overlay.overlay
@@ -111,6 +120,7 @@
             ];
             nix = {
               registry.nixpkgs.flake = nixpkgs;
+              channel.enable = false;
             };
           }
 
@@ -140,10 +150,12 @@
               nil.overlays.default
               pretty-derby.overlays.default
               nix-vscode-extensions.overlays.default
-              (self: super: {
-                darwin-pkgs = nixpkgs-darwin.legacyPackages.${super.system};
-              })
+              (final: prev: { darwin-pkgs = nixpkgs-darwin.legacyPackages.${prev.system}; })
             ];
+            nix = {
+              nixPath = [ "nixpkgs=${nixpkgs}" ];
+              registry.nixpkgs.flake = nixpkgs;
+            };
           }
 
           ./darwin-configuration.nix
@@ -165,22 +177,23 @@
           }
         ];
       };
-    } // (flake-utils.lib.eachDefaultSystem (system:
+    }
+    // (flake-utils.lib.eachDefaultSystem (
+      system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      in {
-        devShells.default = with pkgs; mkShell {
-          buildInputs = lib.optional stdenv.isDarwin [
-            libiconv
-          ];
-          nativeBuildInputs = [
-            gcc
-            pkg-config
-            luajit
-          ];
-        };
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
+        devShells.default =
+          with pkgs;
+          mkShell.override { stdenv = gccStdenv; } {
+            buildInputs = lib.optional stdenv.isDarwin [ libiconv ];
+            nativeBuildInputs = [
+              pkg-config
+              luajit
+            ];
+          };
+        formatter = pkgs.nixfmt-rfc-style;
       }
     ));
 }

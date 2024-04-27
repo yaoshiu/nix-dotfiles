@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.nurl];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.nurl ];
 }

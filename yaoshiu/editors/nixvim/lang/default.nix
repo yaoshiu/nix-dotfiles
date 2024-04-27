@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./clangd.nix
     ./rust.nix

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim.colorschemes.catppuccin = {
     enable = true;
     flavour = "macchiato";
@@ -15,10 +16,10 @@
       native_lsp = {
         enabled = true;
         underlines = {
-          errors = ["undercurl"];
-          hints = ["undercurl"];
-          warnings = ["undercurl"];
-          information = ["undercurl"];
+          errors = [ "undercurl" ];
+          hints = [ "undercurl" ];
+          warnings = [ "undercurl" ];
+          information = [ "undercurl" ];
         };
       };
       treesitter_context = true;

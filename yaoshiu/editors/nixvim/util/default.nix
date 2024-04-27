@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       persistence.enable = true;
@@ -6,9 +7,7 @@
 
     globals.startuptime_tries = 10;
 
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-startuptime
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ vim-startuptime ];
 
     keymaps = [
       {

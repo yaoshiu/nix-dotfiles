@@ -1,5 +1,4 @@
-{...}: {
-  imports = [
-    ./wluma
-  ];
+{ ... }:
+{
+  imports = [ ./wluma ];
 }

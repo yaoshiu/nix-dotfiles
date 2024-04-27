@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.rm-improved];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.rm-improved ];
 }

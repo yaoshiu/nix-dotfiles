@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.neovim = {
     enable = true;
     withNodeJs = true;
@@ -10,10 +11,13 @@
       wl-clipboard
       imagemagick
       clang-tools
+      haskell-language-server
+      haskellPackages.haskell-debug-adapter
+      rust-analyzer
+      nixfmt-rfc-style
+      nixd
     ];
-    extraLuaPackages = ps: with ps; [
-      magick
-    ];
+    extraLuaPackages = ps: with ps; [ magick ];
   };
 
   xdg.configFile.nvim = {

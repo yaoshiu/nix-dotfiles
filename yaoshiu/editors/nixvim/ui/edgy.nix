@@ -1,8 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
-    extraPlugins = [
-      pkgs.vimPlugins.edgy-nvim
-    ];
+    extraPlugins = [ pkgs.vimPlugins.edgy-nvim ];
 
     keymaps = [
       {

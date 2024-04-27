@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.nixvim = {
     globals = {
       mapleader = " ";
@@ -25,7 +26,16 @@
       pumblend = 10;
       relativenumber = true;
       scrolloff = 4;
-      sessionoptions = [ "buffers" "curdir" "tabpages" "winsize" "help" "globals" "skiprtp" "folds" ];
+      sessionoptions = [
+        "buffers"
+        "curdir"
+        "tabpages"
+        "winsize"
+        "help"
+        "globals"
+        "skiprtp"
+        "folds"
+      ];
       shiftround = true;
       shiftwidth = 2;
       showmode = false;

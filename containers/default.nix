@@ -1,7 +1,6 @@
-{...}: {
-  imports = [
-    ./spark
-  ];
+{ ... }:
+{
+  imports = [ ./spark ];
 
   boot.enableContainers = true;
 }

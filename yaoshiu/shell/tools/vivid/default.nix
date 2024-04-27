@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    vivid
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ vivid ];
 
   programs.zsh.initExtraFirst = ''
     export LS_COLORS="$(vivid generate catppuccin-macchiato)"

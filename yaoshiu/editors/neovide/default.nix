@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home = {
     packages = [ pkgs.neovide ];
     shellAliases = {
@@ -6,14 +7,16 @@
     };
   };
 
-  xdg.configFile."neovide/config.toml".source = (pkgs.formats.toml { }).generate "neovide-config.toml" {
-    maximized = false;
+  xdg.configFile."neovide/config.toml".source =
+    (pkgs.formats.toml { }).generate "neovide-config.toml"
+      {
+        maximized = false;
 
-    font = {
-      normal = [ "Hasklug Nerd Font Mono" ];
-      size = 18;
-    };
-  };
+        font = {
+          normal = [ "Hasklug Nerd Font Mono" ];
+          size = 18;
+        };
+      };
 
   wayland.windowManager.hyprland.settings.windowrule = [
     "suppressevent maximize, ^(neovide)$"
@@ -24,5 +27,6 @@
     neovide_transparency = 0.75;
     neovide_unlink_border_highlights = true;
     neovide_window_blurred = true;
+    neovide_hide_mouse_when_typing = true;
   };
 }

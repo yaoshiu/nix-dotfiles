@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.nixvim = {
     extraConfigLuaPre = ''
       local diagnostic_goto = function(next, severity)
@@ -151,7 +152,10 @@
       {
         key = "<Space>";
         action = "<Nop>";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.silent = true;
       }
 
@@ -159,7 +163,10 @@
       {
         key = "j";
         action = "v:count == 0 ? 'gj' : 'j'";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         options = {
           expr = true;
           silent = true;
@@ -168,7 +175,10 @@
       {
         key = "<Down>";
         action = "v:count == 0 ? 'gj' : 'j'";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         options = {
           expr = true;
           silent = true;
@@ -177,7 +187,10 @@
       {
         key = "k";
         action = "v:count == 0 ? 'gk' : 'k'";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         options = {
           expr = true;
           silent = true;
@@ -186,7 +199,10 @@
       {
         key = "<Up>";
         action = "v:count == 0 ? 'gk' : 'k'";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         options = {
           expr = true;
           silent = true;
@@ -337,7 +353,10 @@
       {
         key = "<esc>";
         action = "<cmd>noh<cr><esc>";
-        mode = [ "n" "i" ];
+        mode = [
+          "n"
+          "i"
+        ];
         options.desc = "Escape and Clear Search";
       }
 
@@ -363,7 +382,10 @@
       {
         key = "n";
         action = "'Nn'[v:searchforward]";
-        mode = [ "x" "o" ];
+        mode = [
+          "x"
+          "o"
+        ];
         options = {
           expr = true;
           desc = "Next Search Result";
@@ -381,7 +403,10 @@
       {
         key = "N";
         action = "'nN'[v:searchforward]";
-        mode = [ "x" "o" ];
+        mode = [
+          "x"
+          "o"
+        ];
         options = {
           expr = true;
           desc = "Previous Search Result";
@@ -409,7 +434,12 @@
       {
         key = "<C-s>";
         action = "<cmd>w<cr><esc>";
-        mode = [ "i" "x" "n" "s" ];
+        mode = [
+          "i"
+          "x"
+          "n"
+          "s"
+        ];
         options.desc = "Save File";
       }
 
@@ -492,7 +522,10 @@
           end
         '';
         lua = true;
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Format";
       }
 
@@ -843,18 +876,28 @@
           	vim.api.nvim_paste(vim.fn.getreg('+'), true, -1)
           end
         '';
-        mode = [ "i" "c" "t" ];
+        mode = [
+          "i"
+          "c"
+          "t"
+        ];
         lua = true;
       }
       {
         key = "<C-S-c>";
         action = "\"+y";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
       }
       {
         key = "<C-S-v>";
         action = "\"+p";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
       }
     ];
   };

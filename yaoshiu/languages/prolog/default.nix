@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [
-    swiProlog
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ swiProlog ];
 }

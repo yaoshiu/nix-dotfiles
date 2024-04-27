@@ -1,8 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   programs.ags = {
     enable = true;
     configDir = ./config;
@@ -16,8 +13,6 @@
   home.packages = config.programs.ags.extraPackages;
 
   wayland.windowManager.hyprland.settings = {
-    decoration.blurls = [
-      "bar"
-    ];
+    decoration.blurls = [ "bar" ];
   };
 }
