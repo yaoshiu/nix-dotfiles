@@ -16,6 +16,7 @@
       rust-analyzer
       nixfmt-rfc-style
       nixd
+      tree-sitter
     ];
     extraLuaPackages = ps: with ps; [ magick ];
   };

@@ -186,8 +186,8 @@
       {
         devShells.default =
           with pkgs;
-          mkShell.override { stdenv = gccStdenv; } {
-            buildInputs = lib.optional stdenv.isDarwin [ libiconv ];
+          mkShell {
+            buildInputs = lib.optional stdenv.isDarwin [ darwin.libiconv ];
             nativeBuildInputs = [
               pkg-config
               luajit
