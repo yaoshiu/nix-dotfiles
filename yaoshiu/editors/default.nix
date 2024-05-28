@@ -2,7 +2,8 @@
 {
   imports = [
     # ./nixvim
+    ./helix
     ./neovim
-    ./neovide
+    # ./neovide
   ];
 }
