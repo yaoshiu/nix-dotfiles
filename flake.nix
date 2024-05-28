@@ -112,7 +112,7 @@
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
               })
               pretty-derby.overlays.default
-              neovim-nightly-overlay.overlay
+              neovim-nightly-overlay.overlays.default
               nil.overlays.default
               nix-vscode-extensions.overlays.default
               hyprland.overlays.default
@@ -146,7 +146,7 @@
         modules = [
           {
             nixpkgs.overlays = [
-              neovim-nightly-overlay.overlay
+              neovim-nightly-overlay.overlays.default
               nil.overlays.default
               pretty-derby.overlays.default
               nix-vscode-extensions.overlays.default
