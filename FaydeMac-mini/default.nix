@@ -34,6 +34,7 @@
       "sanesidebuttons"
       "mos"
       "baidunetdisk"
+      "rustdesk"
     ];
     masApps = {
       Bitwarden = 1352778147;
