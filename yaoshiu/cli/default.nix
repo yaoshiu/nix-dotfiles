@@ -4,21 +4,22 @@
     ./bat
     ./bottom
     ./commitizen
+    ./direnv
     ./eza
     ./fd
     ./fzf
     ./git
+    ./gitoxide
     ./joshuto
     ./jq
     ./lazygit
-    ./ripgrep
-    ./tealdeer
-    ./rsync
-    ./gitoxide
-    ./rip
     ./nix-init
     ./nix-melt
     ./nurl
+    ./rip
+    ./ripgrep
+    ./rsync
+    ./tealdeer
     ./yazi
   ];
 }

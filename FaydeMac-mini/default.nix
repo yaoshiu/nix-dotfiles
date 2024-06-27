@@ -35,6 +35,9 @@
       "mos"
       "baidunetdisk"
       "rustdesk"
+      "sfm"
+      "firefox"
+      "zed"
     ];
     masApps = {
       Bitwarden = 1352778147;
@@ -62,8 +65,8 @@
     '';
 
     systemPackages = with pkgs; [
-      clang
-      clang-tools
+      clang_17
+      clang-tools_17
       git
       coreutils
       wget

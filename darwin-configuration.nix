@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
-  proxy = "http://192.168.110.2:7890";
+  # proxy = "http://192.168.110.77:7890";
+  proxy = "";
   proxy_env = {
     no_proxy = "127.0.0.1,localhost,*.phieash.moe";
     http_proxy = proxy;

@@ -10,7 +10,7 @@
     extraPackages = with pkgs; [
       wl-clipboard
       imagemagick
-      clang-tools
+      clang-tools_17
       haskell-language-server
       haskellPackages.haskell-debug-adapter
       rust-analyzer
