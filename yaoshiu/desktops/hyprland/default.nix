@@ -27,7 +27,10 @@ in
 
   programs.jq.enable = true;
 
-  home.packages = [ screenshot ];
+  home.packages = with pkgs; [
+    screenshot
+    hyprcursor
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -40,7 +43,7 @@ in
       ];
 
       exec-once = [
-        "hyprctl setcursor Catppuccin-Macchiato-Dark-Cursors 32"
+        "hyprctl setcursor WhiteSur-cursors 32"
         "wluma"
       ];
       "$browser" = "firefox";
@@ -48,11 +51,14 @@ in
       "$terminal" = "kitty";
 
       env = [
-        "XCURSOR_SIZE, 24"
         "QT_QPA_PLATFORMTHEME, qt5ct"
         "XDG_SESSION_TYPE, wayland"
-        "WLR_NO_HARDWARE_CURSORS, 1"
       ];
+
+      cursor = {
+        no_warps = true;
+        no_hardware_cursors = true;
+      };
 
       bind =
         [
@@ -116,7 +122,6 @@ in
         "col.inactive_border" = "0xff382D2E";
         no_border_on_floating = false;
         layout = "dwindle";
-        no_cursor_warps = true;
         allow_tearing = false;
       };
 
