@@ -30,6 +30,7 @@
       wget
       yj
       nix-ld-rs
+      clash-nyanpasu
     ];
 
     interactiveShellInit = ''
