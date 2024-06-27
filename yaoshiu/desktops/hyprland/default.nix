@@ -34,6 +34,11 @@ in
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
+      monitor = [
+        "DP-2, highrr, 0x0, auto"
+        "eDP-1, highrr, auto, auto"
+      ];
+
       exec-once = [
         "hyprctl setcursor Catppuccin-Macchiato-Dark-Cursors 32"
         "wluma"
