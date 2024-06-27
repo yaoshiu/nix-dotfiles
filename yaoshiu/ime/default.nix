@@ -18,7 +18,7 @@
           owner = "hugh7007";
           repo = "xmjd6-rere";
           rev = "master";
-          hash = "sha256-mKPPs/10LdxGbz88aDdoFdyGLzAU9DyAsUAoOnKHvgE=";
+          hash = "sha256-DEBsy3+dGdkIAN36dCrZbFKO+W6hqZCi8VFC2x37BM0=";
         };
 
         buildPhase = ''

@@ -17,10 +17,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,7 +66,6 @@
     {
       ags,
       home-manager,
-      hyprland,
       neovim-nightly-overlay,
       nil,
       nix-darwin,
@@ -97,8 +92,6 @@
 
           home-manager.nixosModules.home-manager
 
-          hyprland.nixosModules.default
-
           nixos-hardware.nixosModules.lenovo-legion-16ach6h
 
           sops-nix.nixosModules.sops
@@ -115,7 +108,6 @@
               neovim-nightly-overlay.overlays.default
               nil.overlays.default
               nix-vscode-extensions.overlays.default
-              hyprland.overlays.default
               nix-ld-rs.overlays.default
             ];
             nix = {
@@ -132,7 +124,6 @@
               users.yaoshiu = import ./yaoshiu;
               sharedModules = [
                 ags.homeManagerModules.default
-                hyprland.homeManagerModules.default
                 nixvim.homeManagerModules.nixvim
                 sops-nix.homeManagerModules.sops
               ];
