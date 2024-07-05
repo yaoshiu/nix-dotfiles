@@ -4,6 +4,6 @@
 
   home.packages = with pkgs; [
     qq
-    sing-box
+    onlyoffice-bin
   ];
 }
